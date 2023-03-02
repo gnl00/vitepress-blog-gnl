@@ -1,0 +1,24 @@
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+
+  --vp-c-brand: #646cff;
+  --vp-c-brand-light: #abaef2;
+  --vp-c-brand-dark: #565ee8;
+  --vp-c-brand-lighter: #abaef2;
+  --vp-c-brand-darker: #565ee8;
+
+  --vp-custom-block-info-border: #3f85db;
+}
+
+.logo {
+  border-radius: 10px;
+}
+
+.image-src {
+  top: 60% !important;
+}
+
+.vp-doc .custom-block p {
+  line-height: 32px !important;
+}
