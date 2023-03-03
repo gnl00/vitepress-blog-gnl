@@ -83,7 +83,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: '算法基础', link: '/posts/al/算法基础' }, 
+          { text: '位运算', link: '/posts/al/位运算' }, 
         ]
       },
       {
