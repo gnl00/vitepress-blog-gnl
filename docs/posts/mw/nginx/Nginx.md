@@ -66,7 +66,7 @@ nginx -s quit
 
 **配置**
 
-```conf
+```
 	# 处理静态资源
 	server {
 	    listen 80;
@@ -138,7 +138,7 @@ nginx -s quit
 
 **配置**
 
-```conf
+```
     # 反向代理设置
     server {
         # 监听80端口
@@ -166,7 +166,7 @@ nginx -s quit
     }
 ```
 
-```conf
+```
 server {
     listen       80;
     server_name  sk-test.com;
@@ -220,7 +220,7 @@ server {
 
 **配置**
 
-```conf
+```
     # 负载均衡设置一组针对 proxy_pass http://nginx-test.com 服务的负载均衡
     upstream nginx-test.com {
         # 设置负载均衡机制，默认使用轮询机制
@@ -261,7 +261,7 @@ server {
 
 **配置**
 
-```conf
+```
 server {
   listen 80;
   server_name localhost;
@@ -291,7 +291,7 @@ server {
 
 **配置**
 
-```conf
+```
 http {
     # $binary_remote_addr 表⽰保存客⼾端IP地址的⼆进制形式
     # mylimit zone=keyword标识区域的名字
@@ -316,7 +316,7 @@ http {
 
 > 可以拒绝某个（某组）IP访问
 
-```conf
+```
 location / {
     deny 121.43.102.159;
     deny 121.84.165.0/24;
@@ -353,7 +353,7 @@ location / {
 
 下载HTTPS证书的压缩文件，里面有个 `Nginx` 文件夹，把 `xxx.crt` 和 `xxx.key` 文件拷贝到服务器目录，再进行配置
 
-```conf
+```
 server {
   listen 443 ssl http2 default_server;   # SSL 访问端口号为 443
   server_name nginx-test.com;         # 填写绑定证书的域名
@@ -383,7 +383,7 @@ server {
 
 - 前端服务为`fronten.server.com`，后端服务为`backen.server.com`
 
-```conf
+```
 server {
     listen 80;
     server_name  fronten.server.com;

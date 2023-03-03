@@ -88,7 +88,7 @@
 
 #### 错误恢复
 
-```conf
+```
 # By default Redis will stop accepting writes if RDB snapshots are enabled
 # (at least one save point) and the latest background save failed.
 # 默认情况下，如果开启了 RDB 快照，且最近一次 RDB 后台保存失败，就会停止写操作

@@ -37,9 +37,9 @@ export default {
       { 
         text: '后端', 
         items: [
-          { text: 'Java 基础', link: '/posts/be/java-basic/Java-基础' }, 
-          { text: 'Java 进阶', link: '/posts/be/java-advance/Java-进阶' }, 
-          { text: 'Java', link: '/posts/be/java/Java' }, 
+          { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
+          { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
+          { text: 'Java', link: '/posts/be/java/index/Java' }, 
           { text: 'Spring5', link: '/posts/be/spring/Spring5' }, 
           { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' }, 
           { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' }, 
