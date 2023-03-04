@@ -83,7 +83,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: '位运算', link: '/posts/al/位运算' }, 
+          { text: 'Guide', link: '/posts/al/index' }, 
         ]
       },
       {
@@ -99,7 +99,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Index', link: '/posts/fe/.index/' }, 
+          { text: 'Guide', link: '/posts/fe/.index/' }, 
           { text: 'JavaScript', link: '/posts/fe/javascript/JavaScript' }, 
           { text: 'Vue.js', link: '/posts/fe/vuejs/Vuejs' }, 
           { text: 'React', link: '/posts/fe/react/React' }, 
@@ -111,7 +111,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Index', link: '/posts/be/.index/' }, 
+          { text: 'Guide', link: '/posts/be/.index/' }, 
           { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
           { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
           { text: 'Java', link: '/posts/be/java/index/Java' }, 
@@ -129,7 +129,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Index', link: '/posts/db/.index/' }, 
+          { text: 'Guide', link: '/posts/db/.index/' }, 
           { text: 'MySQL', link: '/posts/db/mysql/MySQL' }, 
           { text: 'Redis', link: '/posts/db/redis/Redis' }, 
         ]
@@ -139,7 +139,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Index', link: '/posts/mw/.index/' }, 
+          { text: 'Guide', link: '/posts/mw/.index/' }, 
           { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' }, 
           { text: 'ElasticSearch', link: '/posts/mw/elasticsearch/ElasticSearch' }, 
           { text: 'Kafka', link: '/posts/mw/kafka/Kafka' }, 
@@ -166,6 +166,6 @@ export default {
   markdown: {
     // theme: 'material-theme-palenight',
     lineNumbers: true,
-    toc: '', // TocPluginOptions
+    // toc: '', // TocPluginOptions
   }
 }
