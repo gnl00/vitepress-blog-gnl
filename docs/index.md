@@ -20,7 +20,7 @@ features:
   - icon: 🤔️
     title: 算法
     details: 从找规律，到看心率
-    link: posts/al/index
+    link: posts/al/.index/
   - icon: 😇
     title: 前端
     details: 从调样式，到想去世
@@ -32,7 +32,7 @@ features:
   - icon: 😵‍💫
     title: 设计模式
     details: 全都给我试一试 🐒
-    link: /posts/dp/设计模式
+    link: /posts/dp/.index/
   - icon: 🏃💭
     title: 数据库
     details: 快进到删库跑路
