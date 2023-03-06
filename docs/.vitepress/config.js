@@ -93,7 +93,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Guide', link: '/posts/dp/.index/' }, 
+          { text: 'Guide', link: '/posts/dp/index/' }, 
           { text: '设计模式', link: '/posts/dp/设计模式' }, 
         ]
       },
@@ -102,7 +102,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Guide', link: '/posts/fe/.index/' }, 
+          { text: 'Guide', link: '/posts/fe/index/' }, 
           { text: 'JavaScript', link: '/posts/fe/javascript/JavaScript' }, 
           { text: 'Vue.js', link: '/posts/fe/vuejs/Vuejs' }, 
           { text: 'React', link: '/posts/fe/react/React' }, 
@@ -114,7 +114,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Guide', link: '/posts/be/.index/' }, 
+          { text: 'Guide', link: '/posts/be/index/' }, 
           { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
           { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
           { text: 'Java', link: '/posts/be/java/index/Java' }, 
@@ -132,7 +132,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Guide', link: '/posts/db/.index/' }, 
+          { text: 'Guide', link: '/posts/db/index/' }, 
           { text: 'MySQL', link: '/posts/db/mysql/MySQL' }, 
           { text: 'Redis', link: '/posts/db/redis/Redis' }, 
         ]
@@ -142,7 +142,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Guide', link: '/posts/mw/.index/' }, 
+          { text: 'Guide', link: '/posts/mw/index/' }, 
           { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' }, 
           { text: 'ElasticSearch', link: '/posts/mw/elasticsearch/ElasticSearch' }, 
           { text: 'Kafka', link: '/posts/mw/kafka/Kafka' }, 
