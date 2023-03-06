@@ -20,7 +20,7 @@ features:
   - icon: 🤔️
     title: 算法
     details: 从找规律，到看心率
-    link: posts/al/.index/
+    link: posts/al/index/
   - icon: 😇
     title: 前端
     details: 从调样式，到想去世

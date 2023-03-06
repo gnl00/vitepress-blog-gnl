@@ -24,7 +24,7 @@ export default {
     logo: './logo.jpeg',
     nav: [
       { text: 'Recently', link: '/recently' },
-      { text: '算法', link: 'posts/al/.index/' },
+      { text: '算法', link: 'posts/al/index/' },
       { 
         text: '前端',
         items: [
@@ -83,7 +83,7 @@ export default {
         collapsible: true,
         collapsed: true,
         items: [ 
-          { text: 'Guide', link: '/posts/al/.index/' }, 
+          { text: 'Guide', link: '/posts/al/index/' }, 
           { text: '位运算', link: '/posts/al/位运算' }, 
           { text: '常见算法', link: '/posts/al/常见算法' }, 
         ]
