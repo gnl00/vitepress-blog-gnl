@@ -37,9 +37,6 @@ export default {
       { 
         text: '后端', 
         items: [
-          { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
-          { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' }, 
-          { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
           { text: 'Java', link: '/posts/be/java/index/Java' }, 
           { text: 'Spring5', link: '/posts/be/spring/Spring5' }, 
           { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' }, 
@@ -116,10 +113,17 @@ export default {
         collapsed: true,
         items: [ 
           { text: 'Guide', link: '/posts/be/index/' }, 
-          { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
-          { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' }, 
-          { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
-          { text: 'Java', link: '/posts/be/java/index/Java' }, 
+          { 
+            text: 'Java', 
+            link: '/posts/be/java/index/Java',
+            collapsible: true,
+            collapsed: true,
+            items: [
+              { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
+              { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' }, 
+              { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
+            ]
+          }, 
           { text: 'JUC', link: '/posts/be/java/juc/JUC' }, 
           { text: 'JVM', link: '/posts/be/java/jvm/JVM' }, 
           { text: 'Spring5', link: '/posts/be/spring/Spring5' }, 
