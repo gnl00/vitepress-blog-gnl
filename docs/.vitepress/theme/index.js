@@ -2,6 +2,9 @@ import DefaultTheme  from "vitepress/theme";
 import Catalog from './component/Catalog';
 import './style.css';
 
+import vitepressBackToTop from 'vitepress-plugin-back-to-top'
+import 'vitepress-plugin-back-to-top/dist/style.css'
+
 console.log('theme config');
 
 export default {
@@ -11,7 +14,10 @@ export default {
   enhanceApp({app}) {
     // The enhanceApp function receives the Vue app instance,
     // you can register components as you would do in a regular Vue application
-
+    vitepressBackToTop({
+      // default
+      threshold:300
+    })
     // 注册全局组件
     app.component('Catalog', Catalog)
     // app.component('Button', Button)
