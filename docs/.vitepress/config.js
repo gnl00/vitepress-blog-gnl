@@ -121,6 +121,7 @@ export default {
             items: [
               { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
               { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' }, 
+              { text: 'Java 多线程', link: '/posts/be/java/java-thread/Java-多线程' }, 
               { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
             ]
           }, 
