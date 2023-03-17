@@ -43,7 +43,7 @@
 
 **JVM 内存结构体系**
 
-![JVM内存结构](assets/JVM内存结构.jpg)
+![JVM内存结构](./assets/JVM内存结构.jpg)
 
 <br>
 
@@ -150,7 +150,7 @@ c. 解析（Resolve）
 
 **类加载器继承关系**
 
-<img src="assets/image-20200430173616539.png" alt="image-20200430173616539" />
+<img src="./assets/image-20200430173616539.png" alt="image-20200430173616539" />
 
 
 
@@ -164,7 +164,7 @@ JVM 对 `.class` 文件采用的是<mark>按需加载</mark>的方式，当需�
 
 
 
-<img src="assets/image-20200501160842395.png" alt="image-20200501160842395"  />
+<img src="./assets/image-20200501160842395.png" alt="image-20200501160842395"  />
 
 <br>
 
@@ -356,7 +356,7 @@ public class String {
 
 
 
-<img src="assets/image-20210404150846257.png" alt="image-20210404150846257" style="zoom:200%;" />
+<img src="./assets/image-20210404150846257.png" alt="image-20210404150846257" style="zoom:200%;" />
 
 <br>
 
@@ -393,7 +393,7 @@ public class String {
 
 #### 堆/栈/方法区交互
 
-<img src="assets/image-20210406171044900.png" alt="image-20210406171044900" style="zoom:200%;" />
+<img src="./assets/image-20210406171044900.png" alt="image-20210406171044900" style="zoom:200%;" />
 
 <br>
 
@@ -407,7 +407,7 @@ public class String {
 
 **Java 7**
 
-![image-20210404162929943](assets/image-20210404162929943.png)
+![image-20210404162929943](./assets/image-20210404162929943.png)
 
 1、Young/New Generation Space，新生代
 
@@ -422,7 +422,7 @@ public class String {
 
 **Java 8**
 
-![image-20210404163110189](assets/image-20210404163110189.png)
+![image-20210404163110189](./assets/image-20210404163110189.png)
 
 <br>
 
@@ -482,7 +482,7 @@ public class String {
 
   2）默认情况下，元空间的大小受本地内存限制，类的元数据放入本地物理内存中，此时可以加载多少类的元数据不再由 `MaxPermSize` 控制，而是由本地内存的实际可用空间来控制
 
-![image-20210404164924346](assets/image-20210404164924346.png)
+![image-20210404164924346](./assets/image-20210404164924346.png)
 
 **堆参数调整**
 
@@ -607,7 +607,7 @@ public class String {
 > }
 > ```
 
-<img src="assets/image-20210406150611786.png" alt="image-20210406150611786" style="zoom:200%;" />
+<img src="./assets/image-20210406150611786.png" alt="image-20210406150611786" style="zoom:200%;" />
 
 <br>
 
@@ -617,7 +617,7 @@ public class String {
 
 **总体概述**
 
-<img src="assets/image-20210406151057954.png" alt="image-20210406151057954" style="zoom:200%;" />
+<img src="./assets/image-20210406151057954.png" alt="image-20210406151057954" style="zoom:200%;" />
 
 <br>
 
@@ -669,7 +669,7 @@ public class String {
 - 优点是不会产生内存碎片；缺点是消耗内存，可用内存减少，当有大量对象存活时，会产生较大复制开销
 
 
-   ![image-20210406162509076](assets/image-20210406162509076.png)
+   ![image-20210406162509076](./assets/image-20210406162509076.png)
 
 <br>
 
@@ -690,11 +690,11 @@ public class String {
 
 - 回收前
 
-<img src="assets/image-20210406163014653.png" alt="image-20210406163014653" style="zoom:200%;" />
+<img src="./assets/image-20210406163014653.png" alt="image-20210406163014653" style="zoom:200%;" />
 
 - 回收后
 
-  <img src="assets/image-20210406163235444.png" alt="image-20210406163235444" style="zoom:200%;" />
+  <img src="./assets/image-20210406163235444.png" alt="image-20210406163235444" style="zoom:200%;" />
 
 <br>
 
@@ -709,7 +709,7 @@ public class String {
 - 缺点：需要付出移动对象的成本，相比于前几个算法耗时长
 
 
-   ![image-20210406165228525](assets/image-20210406165228525.png)
+   ![image-20210406165228525](./assets/image-20210406165228525.png)
 
 <br>
 
