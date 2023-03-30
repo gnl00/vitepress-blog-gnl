@@ -1,7 +1,3 @@
----
-
----
-
 # 🕒 Recently Activities 🎈
 >近期更新...
 
@@ -10,6 +6,10 @@
 ## 🟢 Notes Update
 
 ::: tip NOTES
+
+➡️ **2023** update [MyBatis](/posts/be/mybatis/MyBatis)
+
+➡️ **2023** update [Dubbo](/posts/be/dubbo/Dubbo)
 
 ➡️ **2023** update [Redis 数据类型](/posts/renew/redis/Redis-数据类型)
 

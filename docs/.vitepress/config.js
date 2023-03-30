@@ -43,6 +43,7 @@ export default {
           { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' }, 
           { text: 'Spring Security', link: '/posts/be/springsecurity/SpringSecurity' }, 
           { text: 'Spring Cloud', link: '/posts/be/springcloud/SpringCloud' }, 
+          { text: 'MyBatis', link: '/posts/be/mybatis/MyBatis' },
         ]
       },
       {
@@ -122,16 +123,20 @@ export default {
               { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
               { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' }, 
               { text: 'Java 多线程', link: '/posts/be/java/java-thread/Java-多线程' }, 
+              { text: 'Java 线程池', link: '/posts/be/java/java-threadpool/Java-线程池' }, 
+              { text: 'Java JUC', link: '/posts/be/java/java-juc/Java-JUC' }, 
+              { text: 'Java IO', link: '/posts/be/java/io/Java-IO' }, 
               { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
+
             ]
-          }, 
-          { text: 'JUC', link: '/posts/be/java/juc/JUC' }, 
+          },  
           { text: 'JVM', link: '/posts/be/java/jvm/JVM' }, 
           { text: 'Spring5', link: '/posts/be/spring/Spring5' }, 
           { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' }, 
           { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' }, 
           { text: 'Spring Security', link: '/posts/be/springsecurity/SpringSecurity' }, 
           { text: 'Spring Cloud', link: '/posts/be/springcloud/SpringCloud' },
+          { text: 'MyBatis', link: '/posts/be/mybatis/MyBatis' },
         ]
       },
       {
