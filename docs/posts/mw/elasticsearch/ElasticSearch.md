@@ -1,6 +1,8 @@
-# ElasticSearch
+# Elasticsearch
 
 ## 前言
+
+**全文索引**
 
 一般传统数据库，进行全文检索需要扫描整个表，如果数据量太大，即使对 SQL 的语法优化，效果也不明显。如果建立索引，维护起来也很麻烦，对于 insert 和 update 操作都会重新构建索引。
 
@@ -17,6 +19,24 @@
 
 > 全文搜索引擎工作原理是通过扫描文章中的每一个词，对每一个词建立一个索引。指明该词在文章中出现的次数和位置，当用户查询时，检索程序就根据事先建立的索引进行查找，并将查找的结果反馈给用户的检索方式。类似于通过字典中的检索字表查字的过程。
 
+<br>
+
+**Lucene**
+
+> Lucene 是一个全文搜索引擎库，Elasticsearch 是基于 Lucene 的分布式搜索引擎。 Elasticsearch 使用 Lucene 作为其核心搜索引擎，提供了分布式、支持复杂查询和分析的搜索功能。它提供了更方便的管理和操作工具，使得开发者可以很容易地部署和扩展。Elasticsearch 将 Lucene 的功能暴露给用户，并提供了许多额外的功能和工具，例如聚合、分布式搜索、集群管理等等。
+
+> Lucene 索引由多个文档组成，每个文档又由多个字段组成。每个字段可以有一个或多个相应的属性，例如数据类型、是否存储等。当文档被加入索引时，Lucene 会将文档中的字段值解析为词汇单元（term），并对这些词汇单元进行分词、分析和归档操作，生成一个倒排索引（Inverted Index）。
+
+<br>
+
+**倒排索引**
+
+> 倒排索引是一种常用的文本检索技术，常用于搜索引擎中。与传统索引方式不同，倒排索引是通过单词来查找文档，而不是通过文档来查找单词。倒排索引将单词作为索引关键字，把这些单词所在的文档编号作为索引指针，按照单词首字母的字母表顺序建立的一种索引结构。
+
+> 具体来说，倒排索引是由一个映射关系组成的数据结构，将每个单词映射到包含该单词的所有文档列表中。这样，当用户搜索某个单词时，我们只需要在该单词对应的文档列表中查找即可，而不必遍历所有文档。倒排索引可以极大地加快搜索速度，并且可以进行复杂的词语查询，如短语匹配和模糊搜索。
+
+> [官方介绍](https://www.elastic.co/guide/cn/elasticsearch/guide/current/inverted-index.html)
+
 
 
 <br>
@@ -25,14 +45,15 @@
 
 **数据存储结构**
 
-| 关系型数据库 | ElasticSearch                         |
-| ------------ | ------------------------------------- |
-| Table        | Index                                 |
-| Row          | Document                              |
-| Columns      | Field                                 |
-|              | Term 搜索的基本单位，如文本中的一个词 |
-| Schema       | Mapping                               |
-| SQL          | DSL                                   |
+| 关系型数据库 | Elasticsearch                                                |
+| ------------ | ------------------------------------------------------------ |
+| Database     | Index（类似于传统关系数据库中的数据库，是存储关系型文档的地方） |
+| Table        | Type                                                         |
+| 行(Row)      | 文档(Document)                                               |
+| Columns      | Field                                                        |
+| 字段(Field)  | Term（搜索的基本单位，如文本中的一个词）                     |
+| Schema       | Mapping                                                      |
+| SQL          | DSL                                                          |
 
 
 
@@ -40,9 +61,9 @@
 
 ### 索引
 
-> ElasticSearch 把数据存放到一个或者多个索引（indices）中，简单来说索引就是相似结构的文档集合。对比关系型数据库，创建索引就等同于创建数据库。
+> Elasticsearch 把数据存放到一个或者多个索引（indices）中，简单来说索引就是相似结构的文档集合。对比关系型数据库，创建索引就等同于创建数据库。
 >
-> ElasticSearch 会用到分片（shards）和备份（replicas）机制将一个索引（index）存储多份。
+> Elasticsearch 会用到分片（shards）和备份（replicas）机制将一个索引（index）存储多份。
 
 > **索引与文档**
 >
@@ -113,7 +134,21 @@
 
 > **不同场景下索引的含义**
 >
-> 在 ES 中，索引是一类文档的集合，是名词；同时保存一个文档到 ES 的过程也叫索引（indexing）。抛开 ES 提到索引，可能是 **B 树索引或者是倒排索引**。倒排索引是 ES 中一个重要的数据结构
+> * 在 ES 中，索引是一类文档的集合，是名词
+> * 保存一个文档到 ES 的过程也叫索引（Indexing），是动词，类似 SQL 中的 `INSERT` 关键词
+> * 倒排索引是 ES 中一个重要的数据结构，关系型数据库通过增加一个索引，比如 B树 索引 到指定的列上，以便提升数据检索速度。Elasticsearch 和 Lucene 使用了一个叫做**倒排索引**的结构来达到相同的目的
+
+
+
+<br>
+
+### 类型
+
+> 在 Elasticsearch 6.x 版本及以前，每个索引都可以定义多个类型，用于区分不同种类的文档。例如，一个名为 blog 的索引可以定义两个类型，一个是 post，一个是 comment，用于存储博客文章和评论两种不同类型的文档（相当于 blog 数据库中有 post 和 comment 两张表）
+
+> 每个类型都可以定义自己的映射，包含了字段的数据类型、分词器、分析器、索引选项等信息，不同类型之间可以有不同的映射，从而能够根据具体需求灵活地控制每种类型的索引行为。例如，博客文章的标题和内容可能需要被分词，以便进行全文搜索，而评论则不需要被分词。
+
+> 在 Elasticsearch 7.x 版本中，类型已经被废弃，每个索引只能存在一个默认的 `_doc` 类型，所有的文档都属于该类型。相应地，所有的映射定义都需要使用 `_doc` 类型来表示。这是为了简化 Elasticsearch 的内部结构，减少维护和开发的成本。
 
 
 
@@ -131,18 +166,19 @@
 
 ```json
 {
-    "_index" : "movies", # _index 代表文档所属的索引名
-    "_type" : "_doc", # _type 表示文档所属的类型名
-    "_id" : "2035", # _id 为文档唯一 id
-    "_score" : 1.0, # _score 为相关性打分，是这个文档在这次查询中的算分
-    "_source" : { # _source 为文档的原始 JSON 数据，搜索文档时默认返回的就是 _source 字段
-        "title" : "Blackbeard's Ghost",
-        "genre" : [
-        "Children",
-        "Comedy"
-        ],
-        "@version" : "1", # @version 为文档的版本信息，解决版本冲突的问题
-    }
+  // _index、_id 和 _source 是必须存在的元数据，其他元数据都是可选的
+  "_index" : "movies", // 文档元数据，代表文档所属的索引名
+  "_type" : "_doc", // 文档元数据，表示文档所属的类型名
+  "_id" : "1", // 文档元数据，文档唯一 id
+  "_score" : 1.0, // 文档元数据，为查询结果相关性打分
+  "_source" : { // 文档的原始 JSON 数据
+    "title" : "Blackbeard's Ghost",
+    "genre" : [
+    "Children",
+    "Comedy"
+    ],
+    "@version" : "1", // 文档的版本信息，解决版本冲突的问题
+  }
 }
 ```
 
@@ -248,46 +284,82 @@
 
 ### 分片
 
-> 由于单台机器无法存储大量数据，ES 可以将一个索引中的数据切分为多个分片（Shard），分布在多台服务器上存储。
+> 由于单台机器无法存储大量数据，ES 可以将一个索引中的数据切分为多个分片（Shard），分布在多台服务器上存储。有了分片就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。当一个节点失效时，数据仍然可以通过其他节点进行查询。
+
+> 在 Elasticsearch 中，每个索引都可以被分成多个分片，每个分片是一个独立的 Lucene 索引，可以独立执行建立索引和搜索任务。
+
+> 文档被存储和索引到分片内，但是应用程序是直接与索引而不是与分片进行交互。Elasticsearch 是利用分片将数据分发到集群内各处的。分片是数据的容器，文档保存在分片内，分片又被分配到集群内的各个节点里。当集群规模扩大或者缩小时，Elasticsearch 会自动的在各节点中迁移分片，使得数据仍然均匀分布在集群里。
+
+> **易混淆概念**
 >
-> 有了分片就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。分片（Shard）体现的是物理空间的概念，索引中的数据是分散在分片上的。
+> 一个 Lucene 索引在 Elasticsearch 称作分片。一个 Elasticsearch 索引是分片的集合。 当 Elasticsearch 在索引中搜索的时候，它发送查询到每一个属于该索引的分片（Lucene 索引），合并每个分片的结果到一个全局的结果集。
 
-> 一个 ES 索引可以切分成多个分片，一个分片是一个 **Lucene 索引**。它本身就是一个完整的搜索引擎，可以独立执行建立索引和搜索任务。**Lucene 索引又由很多分段组成，每个分段都是一个倒排索引。**ES 每次 refresh 都会生成一个新的分段，其中包含若干文档的数据。在每个分段内部，文档的不同字段被单独建立索引。**每个字段的值由若干词（Term）组成，Term 是原文本内容经过分词器处理和语言处理后的最终结果**（例如，去除标点符号和转换为词根）
 
-![image-20210714143505500](./assets/image-20210714143505500.png)
 
 <br>
 
-> 分片分为两类，一类为**主分片（Primary Shard）**，另一类为**副本分片（Replica Shard）**
+**主副分片**
 
-- 主分片主要用以**解决水平扩展**的问题，通过主分片，就可以将数据分布到集群上的所有节点上，一个主分片就是一个运行的 Lucene 实例，当我们在创建 ES 索引的时候，可以指定分片数，但是**主分片数在索引创建时指定，后续不允许修改，除非使用 Reindex 进行修改**
-- 副本分片用以**解决数据高可用**的问题，也就是说集群中有节点出现硬件故障的时候，通过副本的方式，也可以保证数据不会产生真正的丢失，因为副本分片是主分片的拷贝，在索引中副本分片数可以动态调整，通过增加副本数，可以在一定程度上提高服务查询的性能（读取的吞吐）
+> 一个分片可以是**主分片（Primary Shard）**或者**副本分片（Replica Shard）**
+>
+> * 索引内任意一个文档都归属于一个主分片，主分片的数目决定着索引能够保存的最大数据量
+> * 副本分片只是主分片的拷贝，副本分片作为硬件故障时保护数据不丢失的冗余备份，并为搜索和返回文档等读操作提供服务。
+>
+> 在索引建立的时候就已经确定了主分片数，但是副本分片数可以随时修改。主分片数默认为 5，副本数默认为 1，表示每个分片都会有一个副本。副本数设置为 0 表示没有副本。
+>
+> 增加分片数会带来以下好处
+>
+> 1. 改善索引和搜索性能，因为更多的分片可以提高并发处理的能力
+> 2. 允许更多的数据存储
+>
+> <br>
+>
+> 增加分片数也会带来以下问题
+>
+> 1. 每个分片都需要占用一定的内存和磁盘空间，增加了硬件成本
+> 2. 每个分片都需要占用一定的网络带宽，增加了网络负载
+> 3. 增加分片数会增加集群维护和管理的复杂度
+>
+> <br>
+>
+> **为索引设置主分片和副本分片**
+>
+> ```json
+> // PUT /blogs
+> {
+>     "settings" :{
+>         "number_of_shards" : 3, // # 3 份主分片
+>         "number_of_repicas" : 1 // # 1 份副本
+>     }
+> }
+> // 索引被分成了 3 个主分片，即便增加再多节点，索引也只能分散在 3 个节点上
+> ```
+>
+
+
 
 <br>
 
-**为索引设置主分片和副本分片**
+**分片的设定**
 
-```json
-PUT /blogs
-{
-    "settings" :{
-        "number_of_shards" : 3, # 表示主分片数为 3
-        "number_of_repicas" : 1 # 表示副本只有 1 份
-    }
-}
-```
+> 分片的设定在生产环境中是十分重要的，很多时候需要提前做好容量规划，分片设置过大的时候，也会带来副作用
+>
+> * 影响搜索结果的打分，影响统计结果的准确性
+> * 单个节点上过多的分片，也会导致资源浪费，同时也会影响性能
+>
+> 主分片数在索引创建时指定，后续不允许修改；副分片数量可以动态调整，通过增加副本数，可以在一定程度上提高服务的查询性能（读取吞吐提高）
 
-<br>
 
-#### 分片的设定
-
-> 分片的设定在生产环境中是十分重要的，很多时候需要提前做好容量规划，因为主分片在索引创建的时候需要预先设定的，并且在事后无法修改
-
-在前面的例子中，一个索引被分成了 3 个主分片，这个集群即便增加再多节点，索引也只能分散在 3 个节点上
 
 <br>
 
-分片设置过大的时候，也会带来副作用，一方面来说会**影响搜索结果的打分**，影响统计结果的准确性，另外，单个节点上过多的分片，也会**导致资源浪费，同时也会影响性能**。从 7.0 版本开始，ES 的默认主分片数设置从 5 改为了 1，从这个方面也可以解决 over-sharding 的问题
+**分段**
+
+> 在 Elasticsearch 中，分段（segment）是对每个分片内部的数据进行分割的一种方式，它是索引的最小单元。每个分片内部包含一个或多个分段，每个分段存储一部分文档数据。
+
+> Lucene 索引由很多分段组成，每个分段都是一个倒排索引。ES 每次 refresh 都会生成一个新的分段，其中包含若干文档的数据。在每个分段内部，文档的不同字段被单独建立索引。**每个字段的值由若干词（Term）组成，Term 是原文本内容经过分词器处理和语言处理后的最终结果**
+
+
 
 <br>
 
@@ -303,7 +375,7 @@ PUT /blogs
 
 <br>
 
-## 操作
+## 安装启动
 
 **Docker**
 
@@ -319,17 +391,19 @@ mkdir -p /mydata/elasticsearch/data
 echo "http.host: 0.0.0.0" >> /mydata/elasticsearch/config/elasticsearch.yml
 # 4、创建容器并启动，单节点启动
 # 9300 端口为 Elasticsearch 集群间组件的通信端口， 9200 端口为浏览器访问的 http协议 RESTful 端口
-docker run -d --name es --net esnet -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -v ~/Workspace/Docker/es/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml elasticsearch:7.17.9
+docker run --name es --net esnet -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms1024m -Xmx1024m" -v ~/Workspace/Docker/es/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -d elasticsearch:7.17.9
 
-docker run --name es -p 9200:9200 -p 9300:9300  -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -v /mydata/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:7.6.2
+-v /es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+-v /es/data:/usr/share/elasticsearch/data 
+-v /es/plugins:/usr/share/elasticsearch/plugins
 
 # elasticsearch.yml 是挂载的配置文件
 # data 是挂载的数据
 # plugins 是 es 的插件，如ik，数据挂载需要权限，需要设置data文件的权限为可读可写,需要下边的指令。
 # -e "discovery.type=single-node" 设置为单节点
-# -e ES_JAVA_OPTS="-Xms256m -Xmx256m" \ 测试环境下，设置ES的初始内存和最大内存，否则导致过大启动不了ES
+# -e ES_JAVA_OPTS="-Xms256m -Xmx256m" 设置 ES 的初始内存和最大内存，过大可能无法启动 ES
 
-# 访问 http://localhost:9200 查看es启动情况
+# 访问 http://localhost:9200 查看 es 启动情况
 ```
 
 ```shell
@@ -362,11 +436,11 @@ i18n.locale: "Zh-CN"
 # http://IP地址:5601/app/kibana
 ```
 
+<br>
 
+## 操作
 
-### 基本操作
-
-#### 节点操作
+### 节点操作
 
 ```json
 # 查看 cat 能进行的操作
@@ -377,20 +451,19 @@ GET _cat/nodes
 
 # 查看健康状态
 GET _cat/health
-```
 
-#### 索引操作
-
-```json
 # 查看所有索引
 GET _cat/indices
 
 # 查看所有索引信息
 GET /_all
+```
 
-# add
-# 创建一个名为customer的索引
-# pretty要求返回一个漂亮的json结果
+### 索引操作
+
+```json
+# 创建 customer 的索引
+# pretty 要求返回漂亮的 json 结果
 PUT /customer?pretty
 
 # update
@@ -403,12 +476,15 @@ DELETE
 HEAD /indexName
 ```
 
-#### 文档操作
+<br>
 
-> 在 Elasticsearch 中，_create 和 _doc 是两种不同的文档创建方式，其区别如下：
+### 文档操作
+
+> 在 Elasticsearch 中，`_create` 和 `_doc` 是两种不同的文档创建方式，其区别如下：
 >
-> 1. `_create` 创建文档时，如果已经存在具有相同 ID 的文档，则会抛出异常，因此 `_create` 操作会要求文档必须不存在才能执行，否则会失败。而 `_doc` 则是直接创建文档，如果已经存在具有相同 ID 的文档，则会覆盖原有文档
-> 2. `_create` 创建文档时，如果不存在对应的索引，则会自动创建索引，而 `_doc` 则不会自动创建索引，需要在创建文档之前先创建好对应的索引
+> * `_create` 创建文档时，如果已经存在具有相同 ID 的文档，则会抛出异常，因此 `_create` 操作会要求文档必须不存在才能执行，否则会失败。而 `_doc` 则是直接创建文档，如果已经存在具有相同 ID 的文档，则会覆盖原有文档
+>
+> * `_create` 创建文档时，如果不存在对应的索引，则会自动创建索引，而 `_doc` 则不会自动创建索引，需要在创建文档之前先创建好对应的索引
 >
 > 一般来说，`_create` 和 `_doc` 操作适用于不同的场景。`_create` 更适用于幂等操作，保证一个 ID 只会创建一次，常用于索引建立时的初始化工作。`_doc` 则更适用于实际业务场景，常用于文档的新增、修改等操作。
 
@@ -421,7 +497,7 @@ HEAD /indexName
    "price": 1999.00
  }
  
- # 创建指定Id文档
+ # 创建指定 Id 文档
  POST /phone/_doc/1
  {
    "brand": "xiaomi",
@@ -429,13 +505,14 @@ HEAD /indexName
    "price": 1999.00
  }
  
- # 查找指定id文档
+ # 查找指定 id 文档
  GET phone/_doc/1
  
- # 查找指定index下的所有数据
+ # 查找指定 index 下的所有数据
  GET phone/_search
  
  # 局部更新
+ # 会覆盖原有的数据，新的数据结构无 price 字段，覆盖更新后 price 字段的数据将会被丢弃 
  POST /phone/_update/1
  {
    "doc": {
@@ -448,14 +525,14 @@ HEAD /indexName
  DELETE phone/_doc/1
  ```
 
-
+<br>
 
 ### 查询操作
 
 #### 条件查询
 
 ```json
-# URL带参查询
+# URL 带参查询
 GET phone/_search?q=brand:小米
 
 # 请求体带参查询
@@ -594,10 +671,10 @@ GET phone/_search
 
 #### 聚合查询
 
-> 聚合允许使用者对ES文档进行统计分析，类似与关系型数据库中的 group by，还有很多其他的聚合，例如取最大值max、平均值avg等
+> 对 ES 文档进行统计分析，类似与关系型数据库中的 `group by`，还有例如取最大值 max、平均值 avg 等聚合
 
 ```json
-# 以price聚合查询，查询结果附带原始数据
+# 以 price 聚合查询，查询结果附带原始数据
 GET phone/_search
 {
 	"aggs":{
@@ -623,7 +700,7 @@ GET phone/_search
 }
 ```
 
-
+<br>
 
 ### 映射关系
 
@@ -634,20 +711,20 @@ PUT /user
 # 创建映射
 PUT /user/_mapping
 {
-    "properties": {
-        "name":{
-        	"type": "text", # 可进行模糊查询
-        	"index": true
-        },
-        "sex":{
-        	"type": "keyword", # 必须全文匹配才有结果
-        	"index": true
-        },
-        "tel":{
-        	"type": "keyword",
-        	"index": false # 
-        }
-    }
+  "properties": {
+      "name":{
+        "type": "text", # 可进行模糊查询
+        "index": true
+      },
+      "gender":{
+        "type": "keyword", # 必须全文匹配才有结果
+        "index": true
+      },
+      "tel":{
+        "type": "keyword",
+        "index": false # 当前字段不作为索引使用
+      }
+  }
 }
 
 # 查询映射
@@ -660,17 +737,13 @@ GET user/_mapping
 
 ## 集群
 
-> 单台 Elasticsearch 服务器提供服务，往往都有最大的负载能力，超过这个阈值，服务器性能就会大大降低甚至不可用，所以生产环境中，一般都是运行在指定服务器集群中
+> 单台 Elasticsearch 服务器提供服务，往往都有最大的负载能力，超过这个阈值，服务器性能就会大大降低甚至不可用。单点服务器存在以下问题
+>
+> - 单台机器存储容量有限
+> - 单服务器容易出现单点故障，无法实现高可用
+> - 单服务的并发处理能力有限
 
-单点服务器存在的问题：
-
-- 单台机器存储容量有限
-- 单服务器容易出现单点故障，无法实现高可用
-- 单服务的并发处理能力有限
-
-
-
-> 一个 ElasticSearch 集群有一个唯一的名字标识，这个名字默认就是 elasticsearch。这个名字是很重要的，因为一个节点只能通过指定某个集群的名字，来加入这个集群
+> 一个 Elasticsearch 集群有一个唯一的名字标识，集群默认名称为 elasticsearch。一个节点只能通过指定某个集群的名字，来加入集群
 
 
 
@@ -740,7 +813,6 @@ public class ESIndexTest {
     // 创建索引
     @Test
     public void addIndexTest() throws IOException {
-
           // 创建索引
           // CreateIndexRequest createIndexRequest = new CreateIndexRequest("user");
           // 发送请求，获取响应
@@ -767,7 +839,7 @@ public class DocTest {
     // 文档 crud 操作
     @Test
     public void documentTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             IndexRequest indexRequest = new IndexRequest();
 
             // 设置索引及唯一性标识
@@ -801,7 +873,7 @@ public class DocTest {
     // 批量操作
     @Test
     public void bulkTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             BulkRequest bulkRequest = new BulkRequest();
 
             // 批量新增
@@ -827,7 +899,7 @@ public class DocTest {
     // 查询索引下的所有数据
     @Test
     public void queryIndexAllTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
 
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -857,7 +929,7 @@ public class DocTest {
     @Test
     public void conditionQueryTest() throws IOException {
 
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 创建搜索请求对象
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -885,7 +957,7 @@ public class DocTest {
     // 分页查询
     @Test
     public void queryByPageTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 创建搜索请求对象
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -918,7 +990,7 @@ public class DocTest {
     // 查询排序
     @Test
     public void queryByOrderTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 创建搜索请求对象
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -947,7 +1019,7 @@ public class DocTest {
 
     @Test
     public void combineQueryTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 创建搜索请求对象
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -981,7 +1053,7 @@ public class DocTest {
     // 范围查询
     @Test
     public void rangeQueryTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 创建搜索请求对象
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -1013,7 +1085,7 @@ public class DocTest {
     // 模糊查询
     @Test
     public void fuzzyQueryTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 创建搜索请求对象
             SearchRequest request = new SearchRequest();
             request.indices("user");
@@ -1040,7 +1112,7 @@ public class DocTest {
     // 高亮查询
     @Test
     public void highlightQueryTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 高亮查询
             SearchRequest request = new SearchRequest().indices("user");
             //2.创建查询请求体构建器
@@ -1082,7 +1154,7 @@ public class DocTest {
     // 查询最大值
     @Test
     public void maxValueQueryTest() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             // 高亮查询
             SearchRequest request = new SearchRequest().indices("user");
             SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
@@ -1100,7 +1172,7 @@ public class DocTest {
     // 分组查询
     @Test
     public void queryByGroup() throws IOException {
-        ElasticSearchConnector.connect(client -> {
+        ElasticsearchConnector.connect(client -> {
             SearchRequest request = new SearchRequest().indices("user");
             SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
             sourceBuilder.aggregation(AggregationBuilders.terms("age_groupby").field("age"));
@@ -1243,9 +1315,9 @@ public class ServiceTest {
 
 ## 参考
 
-[ 一篇文章带你搞定 ElasticSearch 术语 ](https://mp.weixin.qq.com/s/tsoBovXDcB02KxvWu2_SpQ)
+[ 一篇文章带你搞定 Elasticsearch 术语 ](https://mp.weixin.qq.com/s/tsoBovXDcB02KxvWu2_SpQ)
 
 [Elasticsearch 学习笔记](https://blog.csdn.net/u011863024/article/details/115721328)
 
-[ElasticSearch 操作整理](https://segmentfault.com/a/1190000042059652)
+[Elasticsearch 操作整理](https://segmentfault.com/a/1190000042059652)
 

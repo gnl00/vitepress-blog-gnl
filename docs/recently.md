@@ -7,6 +7,8 @@
 
 ::: tip NOTES
 
+➡️ **2023** update [Elasticsearch](/posts/mw/elasticsearch/Elasticsearch)
+
 ➡️ **2023** update [MyBatis](/posts/be/mybatis/MyBatis)
 
 ➡️ **2023** update [Dubbo](/posts/be/dubbo/Dubbo)
