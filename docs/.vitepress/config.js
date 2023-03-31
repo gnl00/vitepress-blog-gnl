@@ -57,7 +57,7 @@ export default {
         text: '中间件',
         items: [ 
           { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' }, 
-          { text: 'ElasticSearch', link: '/posts/mw/elasticsearch/ElasticSearch' }, 
+          { text: 'Elasticsearch', link: '/posts/mw/elasticsearch/Elasticsearch' }, 
           { text: 'Kafka', link: '/posts/mw/kafka/Kafka' }, 
           { text: 'Nginx', link: '/posts/mw/nginx/Nginx' }, 
         ]
@@ -156,7 +156,7 @@ export default {
         items: [ 
           { text: 'Guide', link: '/posts/mw/index/' }, 
           { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' }, 
-          { text: 'ElasticSearch', link: '/posts/mw/elasticsearch/ElasticSearch' }, 
+          { text: 'Elasticsearch', link: '/posts/mw/elasticsearch/Elasticsearch' }, 
           { text: 'Kafka', link: '/posts/mw/kafka/Kafka' }, 
           { text: 'Nginx', link: '/posts/mw/nginx/Nginx' }, 
         ]
