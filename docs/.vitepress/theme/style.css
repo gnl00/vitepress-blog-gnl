@@ -11,16 +11,32 @@
   --vp-custom-block-info-border: #3f85db;
 }
 
+/* 
+.vp-doc :not(pre)>code {
+  border-radius: 5px !important;
+  margin: 3px 3px !important;
+  color: #6649f5 !important;
+  background-color: white !important;
+  border: 1px solid #6649f5 !important;
+}
+
+.vp-doc blockquote {
+  border-left: 2px solid #9185fb !important;
+  border-radius: 5px !important;
+  font-weight: 500 !important;
+} 
+*/
+
+.vp-doc .custom-block p {
+  line-height: 32px !important;
+}
+
 .logo {
   border-radius: 10px;
 }
 
 .image-src {
   top: 60% !important;
-}
-
-.vp-doc .custom-block p {
-  line-height: 32px !important;
 }
 
 .icon-top {
