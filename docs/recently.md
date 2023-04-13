@@ -7,6 +7,8 @@
 
 ::: tip NOTES
 
+➡️ **2023** update [MySQL](/posts/db/mysql/MySQL)
+
 ➡️ **2023** update [Kafka](/posts/mw/kafka/Kafka)
 
 ➡️ **2023** update [Elasticsearch](/posts/mw/elasticsearch/Elasticsearch)
@@ -19,9 +21,7 @@
 
 ➡️ **2023** update [Redis 配置详解](/posts/renew/redis/Redis-配置详解)
 
-➡️ **2023** update [MySQL](/posts/renew/mysql/MySQL)
-
-➡️ **2023** update [Spring6](/posts/renew/spring/Spring6)
+➡️ **2023** update [Spring](/posts/renew/spring/Spring)
 
 ➡️ **2023** update [Java 进阶](/posts/be/java/java-advance/Java-进阶)
 

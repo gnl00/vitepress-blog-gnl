@@ -25,41 +25,41 @@ export default {
     nav: [
       { text: 'Recently', link: '/recently' },
       { text: '算法', link: 'posts/al/index/' },
-      { 
+      {
         text: '前端',
         items: [
-          { text: 'JavaScript', link: '/posts/fe/javascript/JavaScript' }, 
-          { text: 'Vue.js', link: '/posts/fe/vuejs/Vuejs' }, 
-          { text: 'React', link: '/posts/fe/react/React' }, 
-          { text: 'TypeScript', link: '/posts/fe/typescript/TypeScript' }, 
+          { text: 'JavaScript', link: '/posts/fe/javascript/JavaScript' },
+          { text: 'Vue.js', link: '/posts/fe/vuejs/Vuejs' },
+          { text: 'React', link: '/posts/fe/react/React' },
+          { text: 'TypeScript', link: '/posts/fe/typescript/TypeScript' },
         ]
-       },
-      { 
-        text: '后端', 
+      },
+      {
+        text: '后端',
         items: [
-          { text: 'Java', link: '/posts/be/java/index/Java' }, 
-          { text: 'Spring5', link: '/posts/be/spring/Spring5' }, 
-          { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' }, 
-          { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' }, 
-          { text: 'Spring Security', link: '/posts/be/springsecurity/SpringSecurity' }, 
-          { text: 'Spring Cloud', link: '/posts/be/springcloud/SpringCloud' }, 
+          { text: 'Java', link: '/posts/be/java/index/Java' },
+          { text: 'Spring5', link: '/posts/be/spring/Spring5' },
+          { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' },
+          { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' },
+          { text: 'Spring Security', link: '/posts/be/springsecurity/SpringSecurity' },
+          { text: 'Spring Cloud', link: '/posts/be/springcloud/SpringCloud' },
           { text: 'MyBatis', link: '/posts/be/mybatis/MyBatis' },
         ]
       },
       {
         text: '数据库',
-        items: [ 
-          { text: 'MySQL', link: '/posts/db/mysql/MySQL' }, 
-          { text: 'Redis', link: '/posts/db/redis/Redis' }, 
+        items: [
+          { text: 'MySQL', link: '/posts/db/mysql/MySQL' },
+          { text: 'Redis', link: '/posts/db/redis/Redis' },
         ]
       },
       {
         text: '中间件',
-        items: [ 
-          { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' }, 
-          { text: 'Elasticsearch', link: '/posts/mw/elasticsearch/Elasticsearch' }, 
-          { text: 'Kafka', link: '/posts/mw/kafka/Kafka' }, 
-          { text: 'Nginx', link: '/posts/mw/nginx/Nginx' }, 
+        items: [
+          { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' },
+          { text: 'Elasticsearch', link: '/posts/mw/elasticsearch/Elasticsearch' },
+          { text: 'Kafka', link: '/posts/mw/kafka/Kafka' },
+          { text: 'Nginx', link: '/posts/mw/nginx/Nginx' },
         ]
       },
       // { text: 'About', link: '/about' },
@@ -70,71 +70,71 @@ export default {
       //   text: 'Recently Renew',
       //   collapsible: true,
       //   collapsed: true,
-      //   items: [ 
-      //     { text: 'MySQL', link: '/posts/renew/mysql/MySQL' }, 
-      //     { text: 'Redis 配置详解', link: '/posts/renew/redis/Redis-配置详解' }, 
-      //     { text: 'Redis 数据类型', link: '/posts/renew/redis/Redis-数据类型' }, 
-      //     { text: 'Spring6', link: '/posts/renew/spring/Spring6' }, 
+      //   items: [
+      //     { text: 'MySQL', link: '/posts/renew/mysql/MySQL' },
+      //     { text: 'Redis 配置详解', link: '/posts/renew/redis/Redis-配置详解' },
+      //     { text: 'Redis 数据类型', link: '/posts/renew/redis/Redis-数据类型' },
+      //     { text: 'Spring6', link: '/posts/renew/spring/Spring6' },
       //   ]
       // },
       {
         text: '算法',
         collapsible: true,
         collapsed: true,
-        items: [ 
-          { text: 'Guide', link: '/posts/al/index/' }, 
-          { text: '位运算', link: '/posts/al/位运算' }, 
-          { text: '常见算法', link: '/posts/al/常见算法' }, 
+        items: [
+          { text: 'Guide', link: '/posts/al/index/' },
+          { text: '位运算', link: '/posts/al/位运算' },
+          { text: '常见算法', link: '/posts/al/常见算法' },
         ]
       },
       {
         text: '设计模式',
         collapsible: true,
         collapsed: true,
-        items: [ 
-          { text: 'Guide', link: '/posts/dp/index/' }, 
-          { text: '设计模式', link: '/posts/dp/设计模式' }, 
+        items: [
+          { text: 'Guide', link: '/posts/dp/index/' },
+          { text: '设计模式', link: '/posts/dp/设计模式' },
         ]
       },
       {
         text: '前端',
         collapsible: true,
         collapsed: true,
-        items: [ 
-          { text: 'Guide', link: '/posts/fe/index/' }, 
-          { text: 'JavaScript', link: '/posts/fe/javascript/JavaScript' }, 
-          { text: 'Vue.js', link: '/posts/fe/vuejs/Vuejs' }, 
-          { text: 'React', link: '/posts/fe/react/React' }, 
-          { text: 'TypeScript', link: '/posts/fe/typescript/TypeScript' }, 
+        items: [
+          { text: 'Guide', link: '/posts/fe/index/' },
+          { text: 'JavaScript', link: '/posts/fe/javascript/JavaScript' },
+          { text: 'Vue.js', link: '/posts/fe/vuejs/Vuejs' },
+          { text: 'React', link: '/posts/fe/react/React' },
+          { text: 'TypeScript', link: '/posts/fe/typescript/TypeScript' },
         ]
       },
       {
         text: '后端',
         collapsible: true,
         collapsed: true,
-        items: [ 
-          { text: 'Guide', link: '/posts/be/index/' }, 
-          { 
-            text: 'Java', 
+        items: [
+          { text: 'Guide', link: '/posts/be/index/' },
+          {
+            text: 'Java',
             link: '/posts/be/java/index/Java',
             collapsible: true,
             collapsed: true,
             items: [
-              { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' }, 
-              { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' }, 
-              { text: 'Java 多线程', link: '/posts/be/java/java-thread/Java-多线程' }, 
-              { text: 'Java 线程池', link: '/posts/be/java/java-threadpool/Java-线程池' }, 
-              { text: 'Java JUC', link: '/posts/be/java/java-juc/Java-JUC' }, 
-              { text: 'Java IO', link: '/posts/be/java/io/Java-IO' }, 
-              { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' }, 
+              { text: 'Java 基础', link: '/posts/be/java/java-basic/Java-基础' },
+              { text: 'Java 集合', link: '/posts/be/java/java-collection/Java-集合' },
+              { text: 'Java 多线程', link: '/posts/be/java/java-thread/Java-多线程' },
+              { text: 'Java 线程池', link: '/posts/be/java/java-threadpool/Java-线程池' },
+              { text: 'Java JUC', link: '/posts/be/java/java-juc/Java-JUC' },
+              { text: 'Java IO', link: '/posts/be/java/io/Java-IO' },
+              { text: 'Java 进阶', link: '/posts/be/java/java-advance/Java-进阶' },
 
             ]
-          },  
-          { text: 'JVM', link: '/posts/be/java/jvm/JVM' }, 
-          { text: 'Spring5', link: '/posts/be/spring/Spring5' }, 
-          { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' }, 
-          { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' }, 
-          { text: 'Spring Security', link: '/posts/be/springsecurity/SpringSecurity' }, 
+          },
+          { text: 'JVM', link: '/posts/be/java/jvm/JVM' },
+          { text: 'Spring5', link: '/posts/be/spring/Spring5' },
+          { text: 'Spring MVC', link: '/posts/be/springmvc/SpringMVC' },
+          { text: 'Spring Boot', link: '/posts/be/springboot/SpringBoot' },
+          { text: 'Spring Security', link: '/posts/be/springsecurity/SpringSecurity' },
           { text: 'Spring Cloud', link: '/posts/be/springcloud/SpringCloud' },
           { text: 'MyBatis', link: '/posts/be/mybatis/MyBatis' },
         ]
@@ -143,22 +143,22 @@ export default {
         text: '数据库',
         collapsible: true,
         collapsed: true,
-        items: [ 
-          { text: 'Guide', link: '/posts/db/index/' }, 
-          { text: 'MySQL', link: '/posts/db/mysql/MySQL' }, 
-          { text: 'Redis', link: '/posts/db/redis/Redis' }, 
+        items: [
+          { text: 'Guide', link: '/posts/db/index/' },
+          { text: 'MySQL', link: '/posts/db/mysql/MySQL' },
+          { text: 'Redis', link: '/posts/db/redis/Redis' },
         ]
       },
       {
         text: '中间件',
         collapsible: true,
         collapsed: true,
-        items: [ 
-          { text: 'Guide', link: '/posts/mw/index/' }, 
-          { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' }, 
-          { text: 'Elasticsearch', link: '/posts/mw/elasticsearch/Elasticsearch' }, 
-          { text: 'Kafka', link: '/posts/mw/kafka/Kafka' }, 
-          { text: 'Nginx', link: '/posts/mw/nginx/Nginx' }, 
+        items: [
+          { text: 'Guide', link: '/posts/mw/index/' },
+          { text: 'RocketMQ', link: '/posts/mw/rocketmq/RocketMQ' },
+          { text: 'Elasticsearch', link: '/posts/mw/elasticsearch/Elasticsearch' },
+          { text: 'Kafka', link: '/posts/mw/kafka/Kafka' },
+          { text: 'Nginx', link: '/posts/mw/nginx/Nginx' },
         ]
       },
     ],
