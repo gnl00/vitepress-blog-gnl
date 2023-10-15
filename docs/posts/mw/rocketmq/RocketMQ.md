@@ -1314,7 +1314,7 @@ java -jar rocketmq-xxxxxx.jar
 
 
 
-<brs>
+<br>
 
 ## 参考
 

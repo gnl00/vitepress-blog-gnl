@@ -15,8 +15,8 @@
   "author": "gnl",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.49",
-    "vue": "^3.2.47"
+    "vitepress": "^1.0.0-rc.22",
+    "vue": "^3.3.4"
   },
   "dependencies": {
     "medium-zoom": "^1.0.8",
