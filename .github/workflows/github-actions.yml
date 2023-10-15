@@ -36,11 +36,12 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/docs
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: pages
-          path: '.' # Upload entire repository
+          path: './docs/dist' # Upload artifact
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
