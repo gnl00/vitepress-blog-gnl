@@ -4,5 +4,5 @@ node_modules
 .idea
 .vscode
 .DS_Store
-/*/*/dist
-docs/.vitepress/cache/*
+**/dist
+**/cache
